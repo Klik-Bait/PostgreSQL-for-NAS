@@ -1,17 +1,18 @@
 services:
-  db:
-    image: postgres
+  postgres:
+    image: postgres:latest # if it's production ready we never use latest
+    container_name: postgres-test
     restart: always
     environment:
-      POSTGRES_PASSWORD: adrianklik1998
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password123!
+      POSTGRES_DB: klikInc
     volumes:
-      - pgdata:/var/lib/postgresql/data 
- 
-  adminer:
-    image: adminer
-    restart: always
+      - postgres_data:/var/lib/postgresql/data
     ports:
-      - 8080:8080
- 
+      - "5432:5432"
+
+# https://hub.docker.com/r/prometheuscommunity/postgres-exporter
+
 volumes:
-  pgdata:
+  postgres_data:
