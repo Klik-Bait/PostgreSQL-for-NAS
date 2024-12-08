@@ -1,1 +1,0 @@
-Stwórz bazę danych wykorzystując docker.
