@@ -1,0 +1,11 @@
+groups:
+  - name: simple-alerts
+    rules:
+      - alert: PrometheusUptime
+        expr: time() - process_start_time_seconds > 10
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prometheus działa poprawnie"
+          description: "Prometheus działa dłużej niż 10 sekund."
